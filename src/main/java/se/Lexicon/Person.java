@@ -51,6 +51,9 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
+        if (lastName== null){
+            throw new IllegalArgumentException("Lastname should not be null");
+        }
         this.lastName = lastName;
     }
 
@@ -59,9 +62,20 @@ public class Person {
     }
 
     public void setEmail(String email) {
+        if (email == null){
+            throw new IllegalArgumentException("Email should not be null");
+        }
         this.email = email;
     }
 
-
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
 
