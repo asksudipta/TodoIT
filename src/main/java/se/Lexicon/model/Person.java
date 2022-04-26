@@ -1,4 +1,4 @@
-package se.Lexicon;
+package se.Lexicon.model;
 
 public class Person {
 
@@ -6,6 +6,7 @@ public class Person {
     private String firstName;
     private String lastName;
     private String email;
+    public AppUser credential;
 
     //Constructor
     public Person() {
@@ -18,13 +19,14 @@ public class Person {
 
         this.email = email;
     }
-
-
     //Methods
 
+    public AppUser getCredential() {
+        return credential;
+    }
 
-    public String getSummery() {
-        return "name:- " + firstName + " " + lastName + " email :-" + email + " Id :- " + id;
+    public void setCredential(AppUser credential) {
+        this.credential = credential;
     }
 
     public int getId() {
@@ -67,7 +69,6 @@ public class Person {
         }
         this.email = email;
     }
-
     @Override
     public String toString() {
         return "Person{" +
@@ -76,6 +77,16 @@ public class Person {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
 

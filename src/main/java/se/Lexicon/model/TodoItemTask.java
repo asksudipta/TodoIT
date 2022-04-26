@@ -1,4 +1,4 @@
-package se.Lexicon;
+package se.Lexicon.model;
 
 public class TodoItemTask {
 
@@ -63,6 +63,14 @@ public class TodoItemTask {
         this.assignee = assignee;
     }
 
-
+    @Override
+    public String toString() {
+        return "TodoItemTask{" +
+                "id=" + id +
+                ", assigned=" + assigned+
+                ", todoItem=" + todoItem +
+                ", assignee=" + assignee +
+                '}';
+    }
 }
 
