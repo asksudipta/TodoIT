@@ -12,15 +12,16 @@ public class TodoItem {
     private boolean done;
     private Person creator;
 
-    public TodoItem() {
-    }
-
-    public TodoItem(int id, String title, String taskDescription, Person creator) {
+    public TodoItem(int id, String title, String taskDescription, boolean done, LocalDate deadLine, Person creator) {
+        this(title,taskDescription,done,deadLine,creator);
         this.id = id;
-        this.title = title;
-        this.taskDescription = taskDescription;
-        this.creator = creator;
-
+    }
+    public TodoItem(String title, String taskDescription, boolean done, LocalDate deadLine, Person creator) {
+    setTitle(title);
+    setCreator(creator);
+    setDone(done);
+    setDeadLine(deadLine);
+    setTaskDescription(taskDescription);
     }
 
     public int getId() {
@@ -36,7 +37,8 @@ public class TodoItem {
     }
 
     public void setTitle(String title) {
-        if (title == null) throw new IllegalArgumentException("Title should not be null");
+        //if (title == null) throw new IllegalArgumentException("Title should not be null");
+        Validation.checkStringNotNull.andThen(Validation.checkNotEmpty).andThen(Validation.checkMaxLength20).accept(title,"Title");
         this.title = title;
     }
 
@@ -53,7 +55,8 @@ public class TodoItem {
     }
 
     public void setDeadLine(LocalDate deadLine) {
-        if (deadLine == null) throw new RuntimeException("The date should not be null");
+        //if (deadLine == null) throw new RuntimeException("The date should not be null");
+        Validation.checkDateNotNull.andThen(Validation.checkNotEmpty).accept(String.valueOf(deadLine),"Localdate");
         this.deadLine = deadLine;
     }
 
@@ -69,9 +72,12 @@ public class TodoItem {
     public Person getCreator() {
         return creator;
     }
-
     public void setCreator(Person creator) {
+        if(creator==null)throw new IllegalArgumentException("Creator is null");
         this.creator = creator;
+    }
+    public boolean isOverdue(){
+        return LocalDate.now().isAfter(deadLine);
     }
 
     @Override
@@ -82,6 +88,7 @@ public class TodoItem {
                 ", taskDescription='" + taskDescription + '\'' +
                 ", deadLine=" + deadLine +
                 ", done=" + done +
+                ", creator=" + creator +
                 '}';
     }
 
@@ -92,18 +99,10 @@ public class TodoItem {
         TodoItem todoItem = (TodoItem) o;
         return id == todoItem.id && done == todoItem.done && Objects.equals(title, todoItem.title) && Objects.equals(taskDescription, todoItem.taskDescription) && Objects.equals(deadLine, todoItem.deadLine);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, title, taskDescription, deadLine, done);
     }
-
-    public boolean isOverDue() {
-        boolean Date;
-        // If condition
-        return true;
-    }
-
 }
 
 

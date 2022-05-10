@@ -1,5 +1,9 @@
 package se.Lexicon;
 
+import se.Lexicon.model.Person;
+import se.Lexicon.model.TodoItem;
+import se.Lexicon.model.TodoItemTask;
+
 /**
  * Hello world!
  *
@@ -8,7 +12,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        Person mehrdad= new Person(1,"mehrdad","javan","test@gmail.com");
+      /*  Person mehrdad= new Person(1,"mehrdad","javan","test@gmail.com");
         Person sudipta= new Person(2,"Sudipta","Mishra","Sudipta@gmail.com");
 
 
@@ -21,6 +25,8 @@ public class App
         TodoItemTask taskForSandip=new TodoItemTask(3,task2,sandip);
 
         System.out.println(taskForSandip);
+
+       */
     }
 
 

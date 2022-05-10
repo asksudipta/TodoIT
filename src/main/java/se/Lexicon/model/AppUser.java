@@ -8,9 +8,9 @@ public class AppUser {
     private AppRole roll;
 
     public AppUser(String userName, String password, AppRole roll) {
-        this.userName = userName;
-        this.password = password;
-        this.roll = roll;
+        setUserName(userName);
+        setPassword(password);
+        setRoll(roll);
     }
 
     public String getUserName() {
@@ -36,7 +36,6 @@ public class AppUser {
     }
 
     public void setRoll(AppRole roll) {
-        if (roll == null) throw new IllegalArgumentException("The field roll should not null or empty");
         this.roll = roll;
     }
 

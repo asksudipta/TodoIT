@@ -1,5 +1,7 @@
 package se.Lexicon.model;
 
+import java.util.Objects;
+
 public class TodoItemTask {
 
     private int id;
@@ -27,9 +29,7 @@ public class TodoItemTask {
         if (assignee==null); throw new IllegalArgumentException("TodoItem Assigned should not be null ");
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() {return id;}
 
     public void setId(int id) {
         this.id = id;
@@ -71,6 +71,19 @@ public class TodoItemTask {
                 ", todoItem=" + todoItem +
                 ", assignee=" + assignee +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TodoItemTask that = (TodoItemTask) o;
+        return id == that.id && assigned == that.assigned && Objects.equals(todoItem, that.todoItem) && Objects.equals(assignee, that.assignee);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, assigned, todoItem, assignee);
     }
 }
 
